@@ -1,6 +1,6 @@
 # Team-8095
 
-## Welcome to the NA repository! 
+### Welcome to the NA repository! 
 
 This is a super cool collaboration tool. For the most part you can't break things, so feel free to look around and fiddle with things. 
 
