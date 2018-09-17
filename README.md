@@ -2,7 +2,7 @@
 
 ### Welcome to the NA repository! 
 
-This is a super cool collaboration tool. For the most part you can't break things, so feel free to look around and fiddle with things. 
+This is a super cool collaboration tool. For the most part you can't break things, so feel free to look around and get used to it. 
 
 There are tons of guides online about this stuff. I am also working on a more personalized tutorial that will be out within the next few days (so look forward to that jazz). If you need any help, feel free to reach out to me. Everything here is yours, so do with it what you please.
 
