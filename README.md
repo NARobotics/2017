@@ -14,11 +14,7 @@ You can always go back to previous states of the git so don't worry if you push 
 
 I would highly, highly reccomend downloading the desktop GitHub tool. 
 
-https://desktop.github.com/
-
-It is super useful and allows you to push/pull changes in mere seconds. Once you download the GitHubDesktop you can login and clone an existing repository (our repository is "Team-8095" under the NARobotics organization). Once cloned, you can open your android studio and open the project from inside of your git folder (C:\My Documents\GitHub\Team-8095). Any change you make in android studio can then be saved and commited using the GitHubDesktop app (requires a description to upload).
-
-Aside from sending pushes from you computer, you can manually edit all of your files in the online editor if you need to make quick changes. Or quickly want to edit this README file.
+You can find out how to get everything setup under the Wiki tab or just click this nifty [link](https://github.com/NARobotics/Team-8095/wiki/Getting-Setup)
 
 ### What can you do with GitHub?
 
