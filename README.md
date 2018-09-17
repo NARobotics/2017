@@ -24,7 +24,7 @@ Aside from sending pushes from you computer, you can manually edit all of your f
 
 In the (very) near future the Wiki tab will be populated will all kinds of goodies. That is where the official coding tutorial and all aditional resources will be stored.
 
-For now while things are still under construction, check out the projects tab and start thinking of things that need to be done/researched, if you have anything you want to put in the Wiki go right on ahead, and most importantly, correct my spelling misakes pl0x.
+For now while things are still under construction, check out the projects tab and start thinking of things that need to be done/researched. If you have anything you want to put in the Wiki, go right on ahead. And most importantly, help correct my spelling misakes pl0x.
 
 
 TL;DR - GitHub is super cool and you will learn to love it.
