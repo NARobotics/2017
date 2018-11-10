@@ -197,14 +197,6 @@ public class CompetitionDriveCode extends OpMode
 
         //<editor-fold desc="Controller 2">
 
-        /*
-        if (gamepad1.x && arm.getPosition() < .97){
-            arm.setPosition(arm.getPosition() + .03);
-        }
-        if (gamepad1.y && arm.getPosition() > .03) {
-            arm.setPosition(arm.getPosition() - .03);
-        }
-        */
 
         if (gamepad2.x)
         {
@@ -212,12 +204,10 @@ public class CompetitionDriveCode extends OpMode
           outake.setTargetPosition(360);
           outake.setMode(DcMotor.RunMode.RUN_TO_POSITION);
           outake.setPower(0.3);
-          /*
           if (outake.getCurrentPosition() < 300)
           {
             arm.setPosition(.5);
           }
-          */
           while(outake.isBusy())
           {
 
