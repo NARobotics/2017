@@ -13,13 +13,10 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 public class CompetitionDriveCode extends OpMode
 {
     private ElapsedTime runtime = new ElapsedTime();
-    private DcMotor rightFrontDrive, rightBackDrive, leftFrontDrive, leftBackDrive, intake, lift, shooterAngle, outake;
+    private DcMotor rightFrontDrive, rightBackDrive, leftFrontDrive, leftBackDrive, intake, lift, outake;
 
-    //, baseLeftArm, baseRightArm, secondLeftArm, secondRightArm;
 
-    //private CRServo buttonPusher;
-
-    private Servo rail;
+    private Servo arm;
 
     private float drivePowerRY, drivePowerRX, drivePowerLY, drivePowerLX;
     //private double xPower, yPower, liftPower, speedState;
@@ -42,15 +39,15 @@ public class CompetitionDriveCode extends OpMode
 
         lift = hardwareMap.dcMotor.get("lift");
 
-        shooterAngle = hardwareMap.dcMotor.get("shooterAngle");
+        outake = hardwareMap.dcMotor.get("outake");
 
-        //outake = hardwareMap.dcMotor.get("outake");
+
 
 
         leftFrontDrive.setDirection(DcMotorSimple.Direction.REVERSE); //Setting reverse direction to account for spin
         leftBackDrive.setDirection(DcMotorSimple.Direction.REVERSE);
 
-       rail = hardwareMap.servo.get("rail"); //Servo for the rail
+        arm = hardwareMap.servo.get("arm"); //Servo for the outake arm
 
 
         //</editor-fold>
@@ -94,31 +91,40 @@ public class CompetitionDriveCode extends OpMode
         final double v3 = r * Math.sin(robotAngle) + rightX;
         final double v4 = r * Math.cos(robotAngle) - rightX;
 
-        leftFrontDrive.setPower(v1);
-        rightFrontDrive.setPower(v2);
-        leftBackDrive.setPower(v3);
-        rightBackDrive.setPower(v4);
+        if(gamepad1.left_bumper)
+        {
+          leftFrontDrive.setPower(v1*.3);
+          rightFrontDrive.setPower(v2*.3);
+          leftBackDrive.setPower(v3*.3);
+          rightBackDrive.setPower(v4*.3);
+        }
 
-
+        else
+        {
+          leftFrontDrive.setPower(v1);
+          rightFrontDrive.setPower(v2);
+          leftBackDrive.setPower(v3);
+          rightBackDrive.setPower(v4);
+        }
 
 
 
         if (gamepad2.left_stick_y == 0)
         {
-          shooterAngle.setPower(0);
+          outake.setPower(0);
         }
 
         if(gamepad2.left_stick_y > 0)
         {
-          shooterAngle.setPower(.1);
+          outake.setPower(0.3);
         }
 
         if(gamepad2.left_stick_y < 0)
         {
-          shooterAngle.setPower(-.1);
+          outake.setPower(-0.3);
         }
 
-        telemetry.addData("shooterAngle", shooterAngle.getPower());
+        telemetry.addData("outake", outake.getPower());
 
 
 
@@ -190,29 +196,37 @@ public class CompetitionDriveCode extends OpMode
         //</editor-fold>
 
         //<editor-fold desc="Controller 2">
-/*
-        if (gamepad2.a && clamp.getPosition() >=.03) {
-            clamp.setPosition(clamp.getPosition() - .03);
 
+        /*
+        if (gamepad1.x && arm.getPosition() < .97){
+            arm.setPosition(arm.getPosition() + .03);
         }
-        if (gamepad2.b && clamp.getPosition() <=.97) {
-            clamp.setPosition(clamp.getPosition() + .03);
+        if (gamepad1.y && arm.getPosition() > .03) {
+            arm.setPosition(arm.getPosition() - .03);
         }
-*/
-        if(!gamepad1.x && !gamepad1.y)
+        */
+
+        if (gamepad2.x)
         {
-          rail.setPosition(0.5);
-        }
-        if (gamepad1.x){
-            rail.setPosition(rail.getPosition() + .03);
-        }
-        if (gamepad1.y) {
-            rail.setPosition(rail.getPosition() - .03);
+          outake.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+          outake.setTargetPosition(360);
+          outake.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+          outake.setPower(0.3);
+          /*
+          if (outake.getCurrentPosition() < 300)
+          {
+            arm.setPosition(.5);
+          }
+          */
+          while(outake.isBusy())
+          {
+
+          }
+          outake.setPower(0);
         }
 
 
-        //telemetry.addData("clamp", clamp.getPosition());
-        telemetry.addData("rail", rail.getPosition());
+        telemetry.addData("arm", arm.getPosition());
 
 
 
