@@ -206,11 +206,11 @@ public class CompetitionDriveCode extends OpMode
           outake.setPower(0.3);
           if (outake.getCurrentPosition() < 300)
           {
-            arm.setPosition(.5);
+
           }
           while(outake.isBusy())
           {
-
+            arm.setPosition(.5);
           }
           outake.setPower(0);
         }

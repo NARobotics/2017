@@ -10,9 +10,6 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorController;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-/**
- * This is one example of a way to do autonomous. I do not recommend it. You will not have a good time.
- */
 
 @Autonomous(name="EncoderAuto", group="Linear Opmode")
 //@Disabled
@@ -57,8 +54,20 @@ public class LinearAutoMode extends LinearOpMode {
 
             telemetry.addData("Status", "Run Time: " + runtime.toString());
 
+            lift.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
+            lift.setTargetPosition(360);
 
+            lift.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
+            lift.setPower(.5);
+
+            while(lift.isBusy())
+            {
+
+            }
+            //should this be zero
+            lift.setPower(0);
 
             leftFrontDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
             rightFrontDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -86,10 +95,13 @@ public class LinearAutoMode extends LinearOpMode {
 
             }
 
+            //should these be setting the power back to zero?
             leftFrontDrive.setPower(.5);
             leftBackDrive.setPower(.5);
             rightFrontDrive.setPower(.5);
             rightBackDrive.setPower(.5);
+
+
 
 
 
