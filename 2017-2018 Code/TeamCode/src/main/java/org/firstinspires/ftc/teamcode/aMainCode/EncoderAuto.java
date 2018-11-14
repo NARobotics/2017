@@ -56,7 +56,7 @@ public class LinearAutoMode extends LinearOpMode {
 
             lift.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
-            lift.setTargetPosition(360);
+            lift.setTargetPosition(-10000);
 
             lift.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
@@ -66,8 +66,9 @@ public class LinearAutoMode extends LinearOpMode {
             {
 
             }
-            //should this be zero
             lift.setPower(0);
+
+            //add sleep command
 
             leftFrontDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
             rightFrontDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -90,16 +91,20 @@ public class LinearAutoMode extends LinearOpMode {
             rightBackDrive.setPower(.5);
 
 
+
             while(leftFrontDrive.isBusy() && leftBackDrive.isBusy() && rightFrontDrive.isBusy() &&rightBackDrive.isBusy())
             {
 
             }
 
-            //should these be setting the power back to zero?
-            leftFrontDrive.setPower(.5);
-            leftBackDrive.setPower(.5);
-            rightFrontDrive.setPower(.5);
-            rightBackDrive.setPower(.5);
+            leftFrontDrive.setPower(0);
+            leftBackDrive.setPower(0);
+            rightFrontDrive.setPower(0);
+            rightBackDrive.setPower(0);
+
+            //bring the lift back down
+
+
 
 
 
