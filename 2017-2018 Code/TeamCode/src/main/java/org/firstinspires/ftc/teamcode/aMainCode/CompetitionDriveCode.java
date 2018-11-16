@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.aMainCode;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
+import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
@@ -74,8 +75,9 @@ public class CompetitionDriveCode extends OpMode
      * Code to run REPEATEDLY after the driver hits PLAY but before they hit STOP
      */
 
+
     @Override
-    public void loop() {
+    public void loop(){
         //<editor-fold desc="Controller 1">
         drivePowerRY = gamepad1.right_stick_y;
         drivePowerRX = gamepad1.right_stick_x;
@@ -109,6 +111,8 @@ public class CompetitionDriveCode extends OpMode
 
 
 
+
+        /*
         if (gamepad2.left_stick_y == 0)
         {
           outake.setPower(0);
@@ -126,6 +130,75 @@ public class CompetitionDriveCode extends OpMode
 
         telemetry.addData("outake", outake.getPower());
 
+*/
+
+
+
+
+
+
+
+
+        if (gamepad2.x)
+        {
+          outake.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+          outake.setTargetPosition(475);
+          outake.setPower(.5);
+          outake.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
+
+          while(outake.isBusy())
+          {
+
+          }
+          outake.setPower(0);
+          runtime.reset();
+          while (runtime.seconds() < 1.0)
+          {
+
+          }
+          arm.setPosition(2.0);
+          runtime.reset();
+          while (runtime.seconds() < 1.0)
+          {
+
+          }
+          arm.setPosition(.175);
+
+          outake.setTargetPosition(10);
+          outake.setPower(.1);
+          outake.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
+          while(outake.isBusy())
+          {
+
+          }
+          outake.setPower(0);
+
+          outake.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
+        }
+
+        if (gamepad2.y)
+        {
+          arm.setPosition(0.03);
+
+          outake.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+          outake.setTargetPosition(450);
+          outake.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+          outake.setPower(0.3);
+
+          while(outake.isBusy())
+          {
+
+          }
+          outake.setPower(0);
+
+          arm.setPosition(.97);
+
+        }
+
+        telemetry.addData("arm", arm.getPosition());
 
 
 
@@ -168,7 +241,6 @@ public class CompetitionDriveCode extends OpMode
         telemetry.addData("lift", lift.getPower());
 
 
-/*
 
         if (gamepad2.left_trigger == 0 && gamepad2.right_trigger == 0)
         {
@@ -186,7 +258,6 @@ public class CompetitionDriveCode extends OpMode
         }
         telemetry.addData("outake", outake.getPower());
 
-*/
 
 
 
@@ -196,24 +267,6 @@ public class CompetitionDriveCode extends OpMode
         //</editor-fold>
 
         //<editor-fold desc="Controller 2">
-
-
-        if (gamepad2.x)
-        {
-          outake.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-          outake.setTargetPosition(360);
-          outake.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-          outake.setPower(0.3);
-          if (outake.getCurrentPosition() < 300)
-          {
-
-          }
-          while(outake.isBusy())
-          {
-            arm.setPosition(.5);
-          }
-          outake.setPower(0);
-        }
 
 
         telemetry.addData("arm", arm.getPosition());

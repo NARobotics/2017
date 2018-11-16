@@ -54,19 +54,27 @@ public class LinearAutoMode extends LinearOpMode {
 
             telemetry.addData("Status", "Run Time: " + runtime.toString());
 
+            //brings the robot down from hanging on the lander
+
             lift.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
             lift.setTargetPosition(-10000);
 
             lift.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
-            lift.setPower(.5);
+            lift.setPower(1);
 
             while(lift.isBusy())
             {
 
             }
             lift.setPower(0);
+
+            //brings the box up so it doesn't catch on the ground while the robot moves
+
+            outake.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+
+            outake.setTargetPosition()
 
             //add sleep command
 
@@ -75,8 +83,11 @@ public class LinearAutoMode extends LinearOpMode {
             leftBackDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
             rightBackDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
-            leftFrontDrive.setTargetPosition(2280);
-            rightFrontDrive.setTargetPosition(2280);
+            //add two negatives, know that we completely guessed as to which ones they should be on
+            //decrease these vales if it ends up hitting the placed out jewels
+
+            leftFrontDrive.setTargetPosition(-2280);
+            rightFrontDrive.setTargetPosition(-2280);
             leftBackDrive.setTargetPosition(2280);
             rightBackDrive.setTargetPosition(2280);
 
@@ -102,7 +113,42 @@ public class LinearAutoMode extends LinearOpMode {
             rightFrontDrive.setPower(0);
             rightBackDrive.setPower(0);
 
-            //bring the lift back down
+            //bring the lift back down while moving the robot to the crater
+
+            leftFrontDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+            rightFrontDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+            leftBackDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+            rightBackDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+
+            leftFrontDrive.setTargetPosition(2280);
+            rightFrontDrive.setTargetPosition(2280);
+            leftBackDrive.setTargetPosition(2280);
+            rightBackDrive.setTargetPosition(2280);
+            lift.setTargetPosition(0);
+
+            leftFrontDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            rightFrontDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            leftBackDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            rightBackDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            lift.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
+            leftFrontDrive.setPower(.5);
+            leftBackDrive.setPower(.5);
+            rightFrontDrive.setPower(.5);
+            rightBackDrive.setPower(.5);
+            lift.setPower(.5)
+
+
+
+            while(leftFrontDrive.isBusy() && leftBackDrive.isBusy() && rightFrontDrive.isBusy() &&rightBackDrive.isBusy())
+            {
+
+            }
+
+            leftFrontDrive.setPower(0);
+            leftBackDrive.setPower(0);
+            rightFrontDrive.setPower(0);
+            rightBackDrive.setPower(0);
 
 
 
