@@ -57,7 +57,7 @@ public class LinearAutoMode extends LinearOpMode {
             //brings the robot down from hanging on the lander
 
             lift.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-
+            //test number
             lift.setTargetPosition(-10000);
 
             lift.setMode(DcMotor.RunMode.RUN_TO_POSITION);
@@ -73,10 +73,16 @@ public class LinearAutoMode extends LinearOpMode {
             //brings the box up so it doesn't catch on the ground while the robot moves
 
             outake.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+            //test number
+            outake.setTargetPosition(100);
 
-            outake.setTargetPosition()
+            outake.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
-            //add sleep command
+            outake.setPower(.5);
+
+            //test idea of not including while statement
+
+            //add sleep command?
 
             leftFrontDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
             rightFrontDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -119,7 +125,7 @@ public class LinearAutoMode extends LinearOpMode {
             rightFrontDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
             leftBackDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
             rightBackDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-
+            //test numbers, lift number should work though
             leftFrontDrive.setTargetPosition(2280);
             rightFrontDrive.setTargetPosition(2280);
             leftBackDrive.setTargetPosition(2280);
