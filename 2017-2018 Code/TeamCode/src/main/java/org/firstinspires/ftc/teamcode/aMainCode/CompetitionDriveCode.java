@@ -69,6 +69,10 @@ public class CompetitionDriveCode extends OpMode
     public void start() {
         runtime.reset();
 
+        outake.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+
+
+
 
     }
     /*
@@ -92,6 +96,11 @@ public class CompetitionDriveCode extends OpMode
         final double v2 = r * Math.sin(robotAngle) - rightX;
         final double v3 = r * Math.sin(robotAngle) + rightX;
         final double v4 = r * Math.cos(robotAngle) - rightX;
+
+        //test number
+
+
+        //test number
 
         if(gamepad1.left_bumper)
         {
@@ -142,8 +151,8 @@ public class CompetitionDriveCode extends OpMode
         if (gamepad2.x)
         {
           outake.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-          outake.setTargetPosition(475);
-          outake.setPower(.5);
+            outake.setTargetPosition(525);
+          outake.setPower(.1);
           outake.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
 
@@ -151,7 +160,6 @@ public class CompetitionDriveCode extends OpMode
           {
 
           }
-          outake.setPower(0);
           runtime.reset();
           while (runtime.seconds() < 1.0)
           {
@@ -163,19 +171,20 @@ public class CompetitionDriveCode extends OpMode
           {
 
           }
-          arm.setPosition(.175);
+          arm.setPosition(.1);
 
-          outake.setTargetPosition(10);
+
+          outake.setTargetPosition(125);
           outake.setPower(.1);
           outake.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
-          while(outake.isBusy())
+          runtime.reset();
+          while(outake.isBusy() && runtime.seconds() < 1)
           {
 
           }
-          outake.setPower(0);
+          outake.setPower(.01);
 
-          outake.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
         }
 
