@@ -126,10 +126,10 @@ public class LinearAutoMode extends LinearOpMode {
             leftBackDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
             rightBackDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
             //test numbers, lift number should work though
-            leftFrontDrive.setTargetPosition(2280);
-            rightFrontDrive.setTargetPosition(2280);
-            leftBackDrive.setTargetPosition(2280);
-            rightBackDrive.setTargetPosition(2280);
+            leftFrontDrive.setTargetPosition(4000);
+            rightFrontDrive.setTargetPosition(4000);
+            leftBackDrive.setTargetPosition(4000);
+            rightBackDrive.setTargetPosition(4000);
             lift.setTargetPosition(0);
 
             leftFrontDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
