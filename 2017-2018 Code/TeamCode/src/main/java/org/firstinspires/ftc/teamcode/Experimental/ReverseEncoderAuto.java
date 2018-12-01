@@ -11,7 +11,7 @@ import com.qualcomm.robotcore.hardware.DcMotorController;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 
-@Autonomous(name="CraterAuto", group="Linear Opmode")
+@Autonomous(name="ReverseEncoderAuto", group="Linear Opmode")
 //@Disabled
 public class LinearAutoMode extends LinearOpMode {
 
@@ -56,10 +56,9 @@ public class LinearAutoMode extends LinearOpMode {
 
             //brings the robot down from hanging on the lander
 
-            /*
             lift.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
             //test number
-            lift.setTargetPosition(-20000);
+            lift.setTargetPosition(-12000);
 
             lift.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
@@ -70,7 +69,6 @@ public class LinearAutoMode extends LinearOpMode {
 
             }
             lift.setPower(0);
-            */
 
             //brings the box up so it doesn't catch on the ground while the robot moves
 
@@ -86,10 +84,10 @@ public class LinearAutoMode extends LinearOpMode {
             //add two negatives, know that we completely guessed as to which ones they should be on
             //decrease these vales if it ends up hitting the placed out jewels
 
-            leftFrontDrive.setTargetPosition(-4000);
-            rightFrontDrive.setTargetPosition(4000);
-            leftBackDrive.setTargetPosition(4000);
-            rightBackDrive.setTargetPosition(-4000);
+            leftFrontDrive.setTargetPosition(4000);
+            rightFrontDrive.setTargetPosition(-4000);
+            leftBackDrive.setTargetPosition(-4000);
+            rightBackDrive.setTargetPosition(4000);
 
             leftFrontDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
             rightFrontDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
@@ -118,10 +116,10 @@ public class LinearAutoMode extends LinearOpMode {
             leftBackDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
             rightBackDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
-            leftFrontDrive.setTargetPosition(5000);
-            rightFrontDrive.setTargetPosition(5000);
-            leftBackDrive.setTargetPosition(5000);
-            rightBackDrive.setTargetPosition(5000);
+            leftFrontDrive.setTargetPosition(-5000);
+            rightFrontDrive.setTargetPosition(-5000);
+            leftBackDrive.setTargetPosition(-5000);
+            rightBackDrive.setTargetPosition(-5000);
 
             leftFrontDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
             rightFrontDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
@@ -153,9 +151,9 @@ public class LinearAutoMode extends LinearOpMode {
             leftBackDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
             rightBackDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
-            leftFrontDrive.setTargetPosition(1500);
+            leftFrontDrive.setTargetPosition(-1500);
             rightFrontDrive.setTargetPosition(0);
-            leftBackDrive.setTargetPosition(1500);
+            leftBackDrive.setTargetPosition(-1500);
             rightBackDrive.setTargetPosition(0);
 
             leftFrontDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
@@ -187,10 +185,10 @@ public class LinearAutoMode extends LinearOpMode {
             leftBackDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
             rightBackDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
-            leftFrontDrive.setTargetPosition(2000);
-            rightFrontDrive.setTargetPosition(2000);
-            leftBackDrive.setTargetPosition(2000);
-            rightBackDrive.setTargetPosition(2000);
+            leftFrontDrive.setTargetPosition(-2000);
+            rightFrontDrive.setTargetPosition(-2000);
+            leftBackDrive.setTargetPosition(-2000);
+            rightBackDrive.setTargetPosition(-2000);
 
             leftFrontDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
             rightFrontDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);

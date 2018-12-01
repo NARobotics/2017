@@ -62,6 +62,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackables;
 public class AutoVuMarkPathing extends LinearOpMode {
 
     private DcMotor rightFrontDrive, rightBackDrive, leftFrontDrive, leftBackDrive;
+    private static final String VUFORIA_KEY = "AajGyPH/////AAABmZkuA5xbQkXdp2G9aBJZ2B4W6zMRn8RlywYVE4NcstbzqeqKijsd1uu3G6Ec25sY7QQ+zFNQosb1T0MXUQSr4fRr3rRafM8k5Uj9c2bOECQrLNahDffDQIfiwp3jqHnKsGSdP01VhQ2jMGtrJoZ67tbfkbbBsJbmZ+1JSJvvJ6YG2HJ+Eao5lDRepJ8OmtoeHAVrs6KzXsEHAHWoEMt1nqR0xO4VGy/yaWIPmgrX/W1ZNAecK9CMtQq5bfPCW5/JuxUW4+Yu7IZ/1AeLJ9Xv8qqaiv0NiJRwtASz0njRdvd794Gg075vC04ic5GwmFviqxyEzk86v/wrj09WzPfFzdgZVzlqfTnWAFVwCEn249TR";
     private static final String TAG = "Vuforia VuMark Sample";
     boolean found = false;
     boolean done = false;

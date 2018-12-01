@@ -14,7 +14,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 public class CompetitionDriveCode extends OpMode
 {
     private ElapsedTime runtime = new ElapsedTime();
-    private DcMotor rightFrontDrive, rightBackDrive, leftFrontDrive, leftBackDrive, intake, lift, outake;
+    private DcMotor rightFrontDrive, rightBackDrive, leftFrontDrive, leftBackDrive, intake, lift, outake, intakeLift;
 
 
     private Servo arm;
@@ -37,6 +37,7 @@ public class CompetitionDriveCode extends OpMode
         leftBackDrive = hardwareMap.dcMotor.get("leftBackDrive");
 
         intake = hardwareMap.dcMotor.get("intake"); //intake motor
+        intake = hardwareMap.dcMotor.get("intakeLift"); //motor to lift intake arm
 
         lift = hardwareMap.dcMotor.get("lift");
 
@@ -121,7 +122,6 @@ public class CompetitionDriveCode extends OpMode
 
 
 
-        /*
         if (gamepad2.left_stick_y == 0)
         {
           outake.setPower(0);
@@ -139,7 +139,6 @@ public class CompetitionDriveCode extends OpMode
 
         telemetry.addData("outake", outake.getPower());
 
-*/
 
 
 
@@ -151,7 +150,7 @@ public class CompetitionDriveCode extends OpMode
         if (gamepad2.x)
         {
           outake.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-            outake.setTargetPosition(525);
+          outake.setTargetPosition(525);
           outake.setPower(.1);
           outake.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
@@ -171,20 +170,17 @@ public class CompetitionDriveCode extends OpMode
           {
 
           }
-          arm.setPosition(.1);
+          arm.setPosition(.04);
 
-
-          outake.setTargetPosition(125);
-          outake.setPower(.1);
+          outake.setPower(0);
+          outake.setTargetPosition(10);
+          outake.setPower(.01);
           outake.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-
-          runtime.reset();
-          while(outake.isBusy() && runtime.seconds() < 1)
+          while (runtime.seconds() < 1.0)
           {
 
           }
-          outake.setPower(.01);
-
+          outake.setPower(0);
 
         }
 
@@ -227,6 +223,15 @@ public class CompetitionDriveCode extends OpMode
           intake.setPower(-0.5);
         }
         telemetry.addData("intake", intake.getPower());
+
+        if(gamepad2.b)
+        {
+          runtime.reset();
+          while (runtime.seconds < 1.0)
+          {
+            intakeLift.setPower(.5);
+          }
+        }
 
 
 
