@@ -54,15 +54,14 @@ import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackables;
 
 /**
  *
- * It is Important to note that Vuvoria needs a produt key to work
+ * It is important to note that Vuvoria needs a produt key to work
  */
 
-@Autonomous(name="2Red Team VuMark Pathing", group ="Auto")
+@Autonomous(name="Tensor Flow Testing", group ="Concept")
 
 public class AutoVuMarkPathing extends LinearOpMode {
 
     private DcMotor rightFrontDrive, rightBackDrive, leftFrontDrive, leftBackDrive;
-    private static final String VUFORIA_KEY = "AajGyPH/////AAABmZkuA5xbQkXdp2G9aBJZ2B4W6zMRn8RlywYVE4NcstbzqeqKijsd1uu3G6Ec25sY7QQ+zFNQosb1T0MXUQSr4fRr3rRafM8k5Uj9c2bOECQrLNahDffDQIfiwp3jqHnKsGSdP01VhQ2jMGtrJoZ67tbfkbbBsJbmZ+1JSJvvJ6YG2HJ+Eao5lDRepJ8OmtoeHAVrs6KzXsEHAHWoEMt1nqR0xO4VGy/yaWIPmgrX/W1ZNAecK9CMtQq5bfPCW5/JuxUW4+Yu7IZ/1AeLJ9Xv8qqaiv0NiJRwtASz0njRdvd794Gg075vC04ic5GwmFviqxyEzk86v/wrj09WzPfFzdgZVzlqfTnWAFVwCEn249TR";
     private static final String TAG = "Vuforia VuMark Sample";
     boolean found = false;
     boolean done = false;
@@ -120,7 +119,7 @@ public class AutoVuMarkPathing extends LinearOpMode {
         // VuforiaLocalizer.Parameters parameters = new VuforiaLocalizer.Parameters();
 
         //License Key
-        parameters.vuforiaLicenseKey = "ATRVz5P/////AAAAGUGDn7ezGUuxhsQ8C1BvtnRCLrOesfpzkg7HM/G2iHEPTMxEijwh60S1vVe9ZwJ/gLyhno4I3iA/nk07byHF2cWnSJlwZUuH3OGyqf5UI1IcB9A532CZpNYt+IX7/CX655084cttkigrSTogcFUJYj3f2fDTTmhiy3vX/Zx8EAVYqBVdVZWJHdr8XfCn56BrYTT5knF/kakEs/bTDaqPwiT1O3GYtWdOS9S90eaUGpyNxOSh4RXLliGE32DstvdlVWiCtHV2hsaQW60ymgJJboNHYaTAzkdTh1BrIQkHU+mB2nQTcsT+Ehb7BjF2EXwGKWWf7n1yArlhe9fli20nd9MqBRc6d6cPT9ubl2dgk16G";
+        parameters.vuforiaLicenseKey = "AajGyPH/////AAABmZkuA5xbQkXdp2G9aBJZ2B4W6zMRn8RlywYVE4NcstbzqeqKijsd1uu3G6Ec25sY7QQ+zFNQosb1T0MXUQSr4fRr3rRafM8k5Uj9c2bOECQrLNahDffDQIfiwp3jqHnKsGSdP01VhQ2jMGtrJoZ67tbfkbbBsJbmZ+1JSJvvJ6YG2HJ+Eao5lDRepJ8OmtoeHAVrs6KzXsEHAHWoEMt1nqR0xO4VGy/yaWIPmgrX/W1ZNAecK9CMtQq5bfPCW5/JuxUW4+Yu7IZ/1AeLJ9Xv8qqaiv0NiJRwtASz0njRdvd794Gg075vC04ic5GwmFviqxyEzk86v/wrj09WzPfFzdgZVzlqfTnWAFVwCEn249TR";
 
         //Designates back camera
         parameters.cameraDirection = VuforiaLocalizer.CameraDirection.BACK;
