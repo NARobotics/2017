@@ -14,14 +14,10 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 public class CompetitionDriveCode extends OpMode
 {
     private ElapsedTime runtime = new ElapsedTime();
-    private DcMotor rightFrontDrive, rightBackDrive, leftFrontDrive, leftBackDrive, intake, lift, outake, intakeLift;
-
-
-    private Servo arm;
+    private DcMotor rightFrontDrive, rightBackDrive, leftFrontDrive, leftBackDrive, intake, lift, outake, arm;
 
     private float drivePowerRY, drivePowerRX, drivePowerLY, drivePowerLX;
-    //private double xPower, yPower, liftPower, speedState;
-    //private String dropState;
+
 
     @Override
     public void init() {
@@ -37,19 +33,18 @@ public class CompetitionDriveCode extends OpMode
         leftBackDrive = hardwareMap.dcMotor.get("leftBackDrive");
 
         intake = hardwareMap.dcMotor.get("intake"); //intake motor
-        intake = hardwareMap.dcMotor.get("intakeLift"); //motor to lift intake arm
 
         lift = hardwareMap.dcMotor.get("lift");
 
         outake = hardwareMap.dcMotor.get("outake");
 
-
+        arm = hardwareMap.dcMotor.get("arm"); //Motor for the extending arm
 
 
         leftFrontDrive.setDirection(DcMotorSimple.Direction.REVERSE); //Setting reverse direction to account for spin
         leftBackDrive.setDirection(DcMotorSimple.Direction.REVERSE);
 
-        arm = hardwareMap.servo.get("arm"); //Servo for the outake arm
+
 
 
         //</editor-fold>
@@ -69,12 +64,6 @@ public class CompetitionDriveCode extends OpMode
     @Override
     public void start() {
         runtime.reset();
-
-        outake.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-
-
-
-
     }
     /*
      * Code to run REPEATEDLY after the driver hits PLAY but before they hit STOP
@@ -100,10 +89,7 @@ public class CompetitionDriveCode extends OpMode
 
         //test number
 
-
-        //test number
-
-        if(gamepad1.left_bumper)
+        if(gamepad1.left_bumper) //slo-mo mode
         {
           leftFrontDrive.setPower(v1*.3);
           rightFrontDrive.setPower(v2*.3);
@@ -111,7 +97,7 @@ public class CompetitionDriveCode extends OpMode
           rightBackDrive.setPower(v4*.3);
         }
 
-        else
+        else //regular drive mode
         {
           leftFrontDrive.setPower(v1);
           rightFrontDrive.setPower(v2);
@@ -119,171 +105,42 @@ public class CompetitionDriveCode extends OpMode
           rightBackDrive.setPower(v4);
         }
 
+        double armPower = gamepad2.right_stick_x;
+        arm.setPower(armPower);
 
-
-
-        if (gamepad2.left_stick_y == 0)
-        {
-          outake.setPower(0);
-        }
-
-        if(gamepad2.left_stick_y > 0)
-        {
-          outake.setPower(0.3);
-        }
-
-        if(gamepad2.left_stick_y < 0)
-        {
-          outake.setPower(-0.3);
-        }
-
-        telemetry.addData("outake", outake.getPower());
-
-
-
-
-
-
-
-
-
-        if (gamepad2.x)
-        {
-          outake.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-          outake.setTargetPosition(525);
-          outake.setPower(.1);
-          outake.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-
-
-          while(outake.isBusy())
-          {
-
-          }
-          runtime.reset();
-          while (runtime.seconds() < 1.0)
-          {
-
-          }
-          arm.setPosition(2.0);
-          runtime.reset();
-          while (runtime.seconds() < 1.0)
-          {
-
-          }
-          arm.setPosition(.04);
-
-          outake.setPower(0);
-          outake.setTargetPosition(10);
-          outake.setPower(.01);
-          outake.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-          while (runtime.seconds() < 1.0)
-          {
-
-          }
-          outake.setPower(0);
-
-        }
-
-        if (gamepad2.y)
-        {
-          arm.setPosition(0.03);
-
-          outake.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-          outake.setTargetPosition(450);
-          outake.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-          outake.setPower(0.3);
-
-          while(outake.isBusy())
-          {
-
-          }
-          outake.setPower(0);
-
-          arm.setPosition(.97);
-
-        }
-
-        telemetry.addData("arm", arm.getPosition());
-
-
-
-
-        if(!gamepad2.right_bumper && !gamepad2.left_bumper)
+        if(!gamepad2.right_bumper && !gamepad2.left_bumper) //move noodle arms
         {
           intake.setPower(0);
         }
-
-        if(gamepad2.right_bumper)
+        if(gamepad2.right_bumper) //move noodle arms in
         {
           intake.setPower(1.5);
         }
-
-        if(gamepad2.left_bumper)
+        if(gamepad2.left_bumper) //move noodle arms out
         {
-          intake.setPower(-0.5);
+          intake.setPower(-1.5);
         }
         telemetry.addData("intake", intake.getPower());
 
-        if(gamepad2.b)
-        {
-          runtime.reset();
-          while (runtime.seconds < 1.0)
-          {
-            intakeLift.setPower(.5);
-          }
-        }
 
-
-
-
-
-
-        if (gamepad1.left_trigger == 0 && gamepad1.right_trigger == 0)
+        if (gamepad1.left_trigger == 0 && gamepad1.right_trigger == 0) //makes sure the lift doesn't move at the wrong time
         {
           lift.setPower(0);
         }
 
-        if(gamepad1.right_trigger > 0)
+        if(gamepad1.right_trigger > 0) //moves the lift up
         {
           lift.setPower(1.5);
         }
 
-        if(gamepad1.left_trigger > 0)
+        if(gamepad1.left_trigger > 0) //moves the lift down
         {
           lift.setPower(-1.5);
         }
         telemetry.addData("lift", lift.getPower());
 
 
-
-        if (gamepad2.left_trigger == 0 && gamepad2.right_trigger == 0)
-        {
-          outake.setPower(0);
-        }
-
-        if(gamepad2.right_trigger > 0)
-        {
-          outake.setPower(0.7);
-        }
-
-        if(gamepad2.left_trigger > 0)
-        {
-          outake.setPower(-0.7);
-        }
         telemetry.addData("outake", outake.getPower());
-
-
-
-
-
-
-
-        //</editor-fold>
-
-        //<editor-fold desc="Controller 2">
-
-
-        telemetry.addData("arm", arm.getPosition());
 
 
 
