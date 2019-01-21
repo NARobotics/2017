@@ -67,9 +67,9 @@ public class NewRobotNewAuto extends LinearOpMode {
 
     private ElapsedTime runtime = new ElapsedTime();
 
-    private int GoldPosition;
 
-    private int distanceForward;
+
+    private int GoldPosition, distanceShimmy, distanceForward, distanceForward2, distanceShimmy2;
 
 
 
@@ -189,6 +189,7 @@ public class NewRobotNewAuto extends LinearOpMode {
 
 
             // The actual t-fod code which better work or im gonna have an aneurism
+            //Tfod code
 
 {
 
@@ -253,23 +254,32 @@ public class NewRobotNewAuto extends LinearOpMode {
             // drives back away from the lander
 
 {
-            if(GoldPosition == 1)
+            if(GoldPosition == 1) //gold is left
             {
-              distanceForward = 2500;
+              distanceShimmy = 2500;
+              //distanceForward = ;
+              //distanceForward2 = ;
+              //distanceShimmy2 = ;
             }
 
-            if(GoldPosition == 2)
+            if(GoldPosition == 2) //gold is right
             {
-              distanceForward = -2500;
+              distanceShimmy = -2500;
+              //distanceForward = ;
+              //distanceForward2 = ;
+              //distanceShimmy2 = ;
             }
 
-            if(GoldPosition == 3)
+            if(GoldPosition == 3) //gold is center
             {
-              distanceForward = 600;
+              distanceShimmy = 600;
+              //distanceForward = ;
+              //distanceForward2 = ;
+              //distanceShimmy2 = ;
             }
 }
 
-            // sets shimmy distance based on supposed position of the gold
+            // sets shimmy and forward drive distances based on supposed position of the gold
 
 {
             leftFrontDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -342,9 +352,215 @@ public class NewRobotNewAuto extends LinearOpMode {
             leftBackDrive.setPower(0);
             rightFrontDrive.setPower(0);
             rightBackDrive.setPower(0);
-            //resets the position to the original
+
 }
             // t-poses on the gold mineral to establish dominance (drives backwards and knocks off the gold)
+
+
+
+
+
+
+
+/*
+{
+  leftFrontDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+  rightFrontDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+  leftBackDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+  rightBackDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+
+  leftFrontDrive.setTargetPosition();
+  rightFrontDrive.setTargetPosition();
+  leftBackDrive.setTargetPosition();
+  rightBackDrive.setTargetPosition();
+
+  leftFrontDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+  rightFrontDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+  leftBackDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+  rightBackDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
+
+  leftFrontDrive.setPower(.5);
+  leftBackDrive.setPower(.5);
+  rightFrontDrive.setPower(.5);
+  rightBackDrive.setPower(.5);
+
+
+
+
+  while(leftFrontDrive.isBusy() && leftBackDrive.isBusy() && rightFrontDrive.isBusy() &&rightBackDrive.isBusy())
+  {
+
+  }
+
+  leftFrontDrive.setPower(0);
+  leftBackDrive.setPower(0);
+  rightFrontDrive.setPower(0);
+  rightBackDrive.setPower(0);
+}
+
+            // sends my child forward after hitting a mineral to a certain distance
+
+{
+  leftFrontDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+  rightFrontDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+  leftBackDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+  rightBackDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+
+  leftFrontDrive.setTargetPosition();
+  rightFrontDrive.setTargetPosition(-);
+  leftBackDrive.setTargetPosition();
+  rightBackDrive.setTargetPosition(-);
+
+  leftFrontDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+  rightFrontDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+  leftBackDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+  rightBackDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
+
+  leftFrontDrive.setPower(.5);
+  leftBackDrive.setPower(.5);
+  rightFrontDrive.setPower(.5);
+  rightBackDrive.setPower(.5);
+
+
+
+
+  while(leftFrontDrive.isBusy() && leftBackDrive.isBusy() && rightFrontDrive.isBusy() &&rightBackDrive.isBusy())
+  {
+
+  }
+
+  leftFrontDrive.setPower(0);
+  leftBackDrive.setPower(0);
+  rightFrontDrive.setPower(0);
+  rightBackDrive.setPower(0);
+}
+            // turns to be perpendicular to the wall
+
+{
+  leftFrontDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+  rightFrontDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+  leftBackDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+  rightBackDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+
+  leftFrontDrive.setTargetPosition(distanceForward2);
+  rightFrontDrive.setTargetPosition(distanceForward2);
+  leftBackDrive.setTargetPosition(distanceForward2);
+  rightBackDrive.setTargetPosition(distanceForward2);
+
+  leftFrontDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+  rightFrontDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+  leftBackDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+  rightBackDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
+
+  leftFrontDrive.setPower(.5);
+  leftBackDrive.setPower(.5);
+  rightFrontDrive.setPower(.5);
+  rightBackDrive.setPower(.5);
+
+
+
+
+  while(leftFrontDrive.isBusy() && leftBackDrive.isBusy() && rightFrontDrive.isBusy() &&rightBackDrive.isBusy())
+  {
+
+  }
+
+  leftFrontDrive.setPower(0);
+  leftBackDrive.setPower(0);
+  rightFrontDrive.setPower(0);
+  rightBackDrive.setPower(0);
+}
+            // drives the robot to kiss the wall (muwah)
+
+{
+  leftFrontDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+  rightFrontDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+  leftBackDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+  rightBackDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+
+  leftFrontDrive.setTargetPosition();
+  rightFrontDrive.setTargetPosition();
+  leftBackDrive.setTargetPosition();
+  rightBackDrive.setTargetPosition();
+
+  leftFrontDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+  rightFrontDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+  leftBackDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+  rightBackDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
+
+  leftFrontDrive.setPower(.5);
+  leftBackDrive.setPower(.5);
+  rightFrontDrive.setPower(.5);
+  rightBackDrive.setPower(.5);
+
+
+
+
+  while(leftFrontDrive.isBusy() && leftBackDrive.isBusy() && rightFrontDrive.isBusy() &&rightBackDrive.isBusy())
+  {
+
+  }
+
+  leftFrontDrive.setPower(0);
+  leftBackDrive.setPower(0);
+  rightFrontDrive.setPower(0);
+  rightBackDrive.setPower(0);
+
+
+
+  marker.setPosition(.9);
+}
+            //shimmys to the marker drop position and drops it
+
+{
+  leftFrontDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+  rightFrontDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+  leftBackDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+  rightBackDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+
+  leftFrontDrive.setTargetPosition();
+  rightFrontDrive.setTargetPosition();
+  leftBackDrive.setTargetPosition();
+  rightBackDrive.setTargetPosition();
+
+  leftFrontDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+  rightFrontDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+  leftBackDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+  rightBackDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
+
+  leftFrontDrive.setPower(.5);
+  leftBackDrive.setPower(.5);
+  rightFrontDrive.setPower(.5);
+  rightBackDrive.setPower(.5);
+
+
+
+
+  while(leftFrontDrive.isBusy() && leftBackDrive.isBusy() && rightFrontDrive.isBusy() &&rightBackDrive.isBusy())
+  {
+
+  }
+
+  leftFrontDrive.setPower(0);
+  leftBackDrive.setPower(0);
+  rightFrontDrive.setPower(0);
+  rightBackDrive.setPower(0);
+}
+            //shimmys to the crater
+*/
+
+
+
+
+
+
+
+
 
 {
               leftFrontDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -382,7 +598,7 @@ public class NewRobotNewAuto extends LinearOpMode {
               rightBackDrive.setPower(0);
 }
             // drives out of t-posing
-marker.setPosition(0);
+
 
 {
     leftFrontDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
